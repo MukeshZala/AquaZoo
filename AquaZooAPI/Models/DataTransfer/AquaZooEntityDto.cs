@@ -1,7 +1,8 @@
-﻿namespace AquaZooAPI.Models
+﻿namespace AquaZooAPI.Models.DataTransfer
 {
-    public class AquaZooEntity
+    public class AquaZooEntityDto
     {
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -13,6 +14,5 @@
         public DateTime Created { get; set; }
 
         public DateTime Started { get; set; }
-
     }
 }
