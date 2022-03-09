@@ -9,6 +9,10 @@ namespace AquaZooAPI.AquaZooMapper
         public AquaZooMappings()
         {
             CreateMap<AquaZooEntity, AquaZooEntityDto>().ReverseMap();
+            CreateMap<LocationProgramEntity, LocationProgramEntityDto>().ReverseMap();
+            CreateMap<LocationProgramEntity, LocationProgramCreateDto>().ReverseMap();
+            CreateMap<LocationProgramEntity, LocationProgramUpdateDto>().ReverseMap();
+
         }
     }
 }

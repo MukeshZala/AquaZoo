@@ -1,5 +1,6 @@
 ﻿using AquaZooAPI.Data;
 using AquaZooAPI.Models;
+using AquaZooAPI.Repository.IRepository;
 
 namespace AquaZooAPI.Repository
 {
@@ -16,7 +17,7 @@ namespace AquaZooAPI.Repository
         {
 
             bool result = true; 
-            if ( entity.Id >0)
+            if ( entity.AquaZooId >0)
             {
                 _db.AquaZooEntities.Update(entity);
             }else
@@ -36,7 +37,7 @@ namespace AquaZooAPI.Repository
             bool result = true;
             if (id > 0)
             {
-                AquaZooEntity record = _db.AquaZooEntities.FirstOrDefault(e => e.Id.Equals(id));
+                AquaZooEntity record = _db.AquaZooEntities.FirstOrDefault(e => e.AquaZooId.Equals(id));
                 if ( record != null)
                 {
                     _db.AquaZooEntities.Remove(record);
@@ -72,7 +73,7 @@ namespace AquaZooAPI.Repository
             AquaZooEntity aquaZooEntity = null; 
             if (id > 0)
             {
-                aquaZooEntity = _db.AquaZooEntities.FirstOrDefault(e => e.Id.Equals(id));
+                aquaZooEntity = _db.AquaZooEntities.FirstOrDefault(e => e.AquaZooId.Equals(id));
                  
 
             }

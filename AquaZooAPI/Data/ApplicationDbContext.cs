@@ -11,5 +11,7 @@ namespace AquaZooAPI.Data
         }
 
         public DbSet<AquaZooEntity> AquaZooEntities { get; set; }
+
+        public DbSet<LocationProgramEntity> LocationProgramEntities { get; set; }
     }
 }

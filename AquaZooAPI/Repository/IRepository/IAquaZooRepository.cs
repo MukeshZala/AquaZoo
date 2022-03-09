@@ -1,6 +1,6 @@
 ﻿using AquaZooAPI.Models;
 
-namespace AquaZooAPI.Repository
+namespace AquaZooAPI.Repository.IRepository
 {
     public interface IAquaZooRepository
     {

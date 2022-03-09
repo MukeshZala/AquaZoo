@@ -4,6 +4,8 @@ using AquaZooAPI.Repository;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using AquaZooAPI.Repository.IRepository;
+
 
 namespace AquaZooAPI.Controllers
 {
@@ -84,7 +86,7 @@ namespace AquaZooAPI.Controllers
         [ProducesDefaultResponseType]
         public IActionResult UpdateAquaZoo([FromBody] AquaZooEntityDto data)
         {
-            if (data == null || data.Id <= 0 )
+            if (data == null || data.AquaZooId <= 0 )
                 return BadRequest(ModelState);
 
             AquaZooEntity aquaZooEntity = _mapper.Map<AquaZooEntity>(data);

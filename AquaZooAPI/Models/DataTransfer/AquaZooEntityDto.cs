@@ -5,7 +5,7 @@ namespace AquaZooAPI.Models.DataTransfer
     public class AquaZooEntityDto
     {
 
-        public int Id { get; set; }
+        public int AquaZooId { get; set; }
 
         [Required]
         public string Name { get; set; }

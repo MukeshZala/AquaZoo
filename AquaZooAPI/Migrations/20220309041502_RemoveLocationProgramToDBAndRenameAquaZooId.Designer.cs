@@ -4,6 +4,7 @@ using AquaZooAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AquaZooAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220309041502_RemoveLocationProgramToDBAndRenameAquaZooId")]
+    partial class RemoveLocationProgramToDBAndRenameAquaZooId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,49 +53,6 @@ namespace AquaZooAPI.Migrations
                     b.HasKey("AquaZooId");
 
                     b.ToTable("AquaZooEntities");
-                });
-
-            modelBuilder.Entity("AquaZooAPI.Models.LocationProgramEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AgeGroup")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("AquaZooId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AquaZooId");
-
-                    b.ToTable("LocationProgramEntities");
-                });
-
-            modelBuilder.Entity("AquaZooAPI.Models.LocationProgramEntity", b =>
-                {
-                    b.HasOne("AquaZooAPI.Models.AquaZooEntity", "AquaZooEntity")
-                        .WithMany()
-                        .HasForeignKey("AquaZooId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AquaZooEntity");
                 });
 #pragma warning restore 612, 618
         }

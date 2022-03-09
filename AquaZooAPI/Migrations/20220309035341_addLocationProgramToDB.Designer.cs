@@ -4,6 +4,7 @@ using AquaZooAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AquaZooAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220309035341_addLocationProgramToDB")]
+    partial class addLocationProgramToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +26,11 @@ namespace AquaZooAPI.Migrations
 
             modelBuilder.Entity("AquaZooAPI.Models.AquaZooEntity", b =>
                 {
-                    b.Property<int>("AquaZooId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AquaZooId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -48,7 +50,7 @@ namespace AquaZooAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AquaZooId");
+                    b.HasKey("Id");
 
                     b.ToTable("AquaZooEntities");
                 });
@@ -56,10 +58,7 @@ namespace AquaZooAPI.Migrations
             modelBuilder.Entity("AquaZooAPI.Models.LocationProgramEntity", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("AgeGroup")
                         .IsRequired()
@@ -80,8 +79,6 @@ namespace AquaZooAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AquaZooId");
-
                     b.ToTable("LocationProgramEntities");
                 });
 
@@ -89,7 +86,7 @@ namespace AquaZooAPI.Migrations
                 {
                     b.HasOne("AquaZooAPI.Models.AquaZooEntity", "AquaZooEntity")
                         .WithMany()
-                        .HasForeignKey("AquaZooId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

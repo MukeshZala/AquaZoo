@@ -1,6 +1,7 @@
 using AquaZooAPI.AquaZooMapper;
 using AquaZooAPI.Data;
 using AquaZooAPI.Repository;
+using AquaZooAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IAquaZooRepository, AquaZooRepository>();
+builder.Services.AddScoped<ILocationProgramRepository, LocationProgramRepository>();
+
 builder.Services.AddAutoMapper(typeof(AquaZooMappings)); 
 
 var app = builder.Build();
