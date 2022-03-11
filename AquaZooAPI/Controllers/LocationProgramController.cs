@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AquaZooAPI.Controllers
 {
-    [Route("api/Programs")]
+    [Route("api/v{version:apiVersion}/Programs")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public class LocationProgramController : ControllerBase

@@ -61,7 +61,11 @@ namespace AquaZooAPI.Repository
 
         public ICollection<LocationProgramEntity> GetLocationsInPrograms(int aquazooProgramId)
         {
-            return _db.LocationProgramEntities.Include(l => l.AquaZooEntity).Where(a => a.Id.Equals(aquazooProgramId)).ToList();
+            var query =
+            _db.LocationProgramEntities.Include(l => l.AquaZooEntity).Where(a => a.AquaZooId.Equals(aquazooProgramId));
+            Console.WriteLine(query.ToQueryString()); 
+            return query.ToList();
+
         }
 
         public ICollection<LocationProgramEntity> GetAllLocationProgramEntities()

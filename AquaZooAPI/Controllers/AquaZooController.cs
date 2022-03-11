@@ -9,7 +9,7 @@ using AquaZooAPI.Repository.IRepository;
 
 namespace AquaZooAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public class AquaZooController : ControllerBase
