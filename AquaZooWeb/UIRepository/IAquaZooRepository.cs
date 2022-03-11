@@ -2,7 +2,7 @@
 
 namespace AquaZooWeb.UIRepository
 {
-     interface IAquaZooRepository:IUIRepository<AquaZooEntity>
+    public  interface IAquaZooRepository:IUIRepository<AquaZooEntity>
     {
     }
 }

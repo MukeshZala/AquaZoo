@@ -2,7 +2,7 @@
 
 namespace AquaZooWeb.UIRepository
 {
-     interface IProgramsRepository : IUIRepository<LocationProgramEntity>
+     public interface IProgramsRepository : IUIRepository<LocationProgramEntity>
     {
     }
 }

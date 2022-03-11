@@ -1,6 +1,6 @@
 ﻿namespace AquaZooWeb.UIRepository
 {
-    interface  IUIRepository<T> where T: class 
+    public interface  IUIRepository<T> where T: class 
     {
         Task<T> GetAsync(string url, int Id);
         Task<IEnumerable<T>> GetAllAsync(string url);
