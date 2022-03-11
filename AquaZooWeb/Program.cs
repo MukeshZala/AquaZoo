@@ -1,7 +1,13 @@
+using AquaZooWeb.UIRepository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IAquaZooRepository, AquaZooRepository>();
+builder.Services.AddScoped<IProgramsRepository, ProgramsRepository>();
 
 var app = builder.Build();
 

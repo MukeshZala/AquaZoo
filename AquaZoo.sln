@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AquaZooAPI", "AquaZooAPI\AquaZooAPI.csproj", "{58FE18E4-69E9-4738-A6DA-F3DE1708EE91}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AquaZooWeb", "AquaZooWeb\AquaZooWeb.csproj", "{F3C8E45B-AC3B-4A6E-9F7A-1370AE0FE904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{58FE18E4-69E9-4738-A6DA-F3DE1708EE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58FE18E4-69E9-4738-A6DA-F3DE1708EE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58FE18E4-69E9-4738-A6DA-F3DE1708EE91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C8E45B-AC3B-4A6E-9F7A-1370AE0FE904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C8E45B-AC3B-4A6E-9F7A-1370AE0FE904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C8E45B-AC3B-4A6E-9F7A-1370AE0FE904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C8E45B-AC3B-4A6E-9F7A-1370AE0FE904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

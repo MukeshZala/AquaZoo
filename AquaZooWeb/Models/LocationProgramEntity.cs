@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AquaZooAPI.Models.DataTransfer
+namespace AquaZooWeb.Models
 {
-    public class LocationProgramEntityDto
+    public class LocationProgramEntity
     {
-        
+
         public int Id { get; set; }
 
         [Required]
@@ -19,7 +19,7 @@ namespace AquaZooAPI.Models.DataTransfer
         [Required]
         public int AquaZooId { get; set; }
 
-        
-        public AquaZooEntityDto AquaZooEntity { get; set; }
+
+        public AquaZooEntity AquaZooEntity { get; set; }
     }
 }
