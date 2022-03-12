@@ -3,6 +3,7 @@ using AquaZooAPI.Models.DataTransfer;
 using AquaZooAPI.Repository;
 using AquaZooAPI.Repository.IRepository;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -62,6 +63,7 @@ namespace AquaZooAPI.Controllers
         [ProducesResponseType(200, Type = typeof(LocationProgramEntityDto))]
         [ProducesResponseType(400)]
         [ProducesDefaultResponseType]
+        [Authorize(Roles ="Admin")]
         public IActionResult GetProgramDetail(int Id)
         {
             LocationProgramEntityDto objDto = null;

@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AquaZooAPI.Repository.IRepository;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace AquaZooAPI.Controllers
 {
@@ -43,6 +43,7 @@ namespace AquaZooAPI.Controllers
         [ProducesResponseType(200, Type = typeof(AquaZooEntityDto))]
         [ProducesResponseType(400)]
         [ProducesDefaultResponseType]
+        [Authorize]
         public IActionResult GetAquaZooDetail(int Id)
         {
             AquaZooEntityDto objDto = null;

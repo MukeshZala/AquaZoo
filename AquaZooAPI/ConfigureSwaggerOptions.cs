@@ -24,6 +24,38 @@ namespace AquaZooAPI
                     description.GroupName,
                     CreateVersionInfo(description));
             }
+
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Description="Add JWT Token in header \n Example : Bearer [Token]",
+                Name="Authorization",
+                In = ParameterLocation.Header,
+                Type= SecuritySchemeType.ApiKey,
+                Scheme="Bearer"
+            });
+
+            options.AddSecurityRequirement(
+                    new OpenApiSecurityRequirement()
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference =new OpenApiReference
+                                {
+                                    Type=ReferenceType.SecurityScheme,
+                                    Id="Bearer"
+                                },
+                                 Scheme="oauth2",
+                                 Name="Bearer",
+                                 In = ParameterLocation.Header , 
+                            }, 
+                            new List<string>()
+                             
+                        }
+                    }
+                );
+
+
         }
 
         public void Configure(string name, SwaggerGenOptions options)
