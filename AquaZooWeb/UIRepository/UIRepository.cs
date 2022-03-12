@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace AquaZooWeb.UIRepository
@@ -15,7 +16,7 @@ namespace AquaZooWeb.UIRepository
             _httpClientFactory = clientFactory; 
         }
 
-        public async Task<bool> CreateAsync(string url, T createObj)
+        public async Task<bool> CreateAsync(string url, T createObj, string token="")
         {
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             if ( createObj != null)
@@ -29,6 +30,12 @@ namespace AquaZooWeb.UIRepository
             }
 
             var client = _httpClientFactory.CreateClient();
+
+            if ( token.Length > 0)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); 
+            }
+
             HttpResponseMessage httpResponse = await client.SendAsync(request);
             if ( httpResponse.StatusCode== System.Net.HttpStatusCode.Created)
             {
@@ -41,11 +48,16 @@ namespace AquaZooWeb.UIRepository
 
         }
 
-        public async Task<bool> DeleteAsync(string url, int Id)
+        public async Task<bool> DeleteAsync(string url, int Id, string token = "")
         {
             var request = new HttpRequestMessage(HttpMethod.Delete, url+Id);
 
             var client = _httpClientFactory.CreateClient();
+            if (token.Length > 0)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             HttpResponseMessage httpResponse = await client.SendAsync(request);
 
             if ( httpResponse.StatusCode == HttpStatusCode.NoContent)
@@ -59,10 +71,15 @@ namespace AquaZooWeb.UIRepository
 
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(string url)
+        public async Task<IEnumerable<T>> GetAllAsync(string url, string token = "")
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url);
             var client = _httpClientFactory.CreateClient();
+
+            if (token.Length > 0)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
 
             HttpResponseMessage responseMessage = await client.SendAsync(request);
 
@@ -77,10 +94,15 @@ namespace AquaZooWeb.UIRepository
 
         }
 
-        public async Task<T> GetAsync(string url, int Id)
+        public async Task<T> GetAsync(string url, int Id, string token = "")
         {
             var request = new HttpRequestMessage(HttpMethod.Get, url + Id);
             var client = _httpClientFactory.CreateClient();
+
+            if (token.Length > 0)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer ", token);
+            }
 
             HttpResponseMessage responseMessage = await client.SendAsync(request);
             if (responseMessage !=null )
@@ -94,10 +116,14 @@ namespace AquaZooWeb.UIRepository
             return null; 
         }
 
-        public async Task<bool> UpdateAsync(string url, T createObj)
+        public async Task<bool> UpdateAsync(string url, T createObj, string token = "")
         {
             var request = new HttpRequestMessage(HttpMethod.Patch, url);
             var client = _httpClientFactory.CreateClient();
+            if (token.Length > 0)
+            {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
 
             if ( createObj != null)
             {

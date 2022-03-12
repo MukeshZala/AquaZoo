@@ -27,6 +27,7 @@ namespace AquaZooAPI.Controllers
         [ProducesResponseType(200, Type= typeof(List<AquaZooEntityDto>))]
         [ProducesResponseType(400)]
         [ProducesDefaultResponseType]
+        [Authorize]
         public  IActionResult GetAllAquaZooData()
         {
             var list = _repositry.GetAquaZooEntities();

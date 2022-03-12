@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpAcc
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,9 +29,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="AquaZoo" asp-action="Index">Aquazium</a>
+
+                        @if( httpAcc.HttpContext.Session.GetString(WebUtility.TokenName) != null &&  httpAcc.HttpContext.Session.GetString(WebUtility.TokenName).Length > 0 )
+                        {
+                            //show menu
+                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="AquaZoo" asp-action="Index">Aquazium</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
+                            </li>
+                        }else
+                        {
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Register</a>
+                        </li>
+                            
+                        }
+
+                       
                     </ul>
                 </div>
             </div>

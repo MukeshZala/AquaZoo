@@ -19,7 +19,8 @@ namespace AquaZooWeb.Controllers
         public async Task<IActionResult> Index()
         {
 
-            return Json( new {  data = await _repo.GetAllAsync (WebUtility.APIAquaZooPath ) });
+            return Json( new {  data = await _repo.GetAllAsync (WebUtility.APIAquaZooPath, HttpContext.Session.GetString(WebUtility.TokenName) )
+            });
 
         }
     }
